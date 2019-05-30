@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html>
+  <head>
+    <script language="facecat" type="text/javascript">
+      {按钮点击方法}
+      function onclick(){
+        var sender = '';
+        getsender(sender);
+        if(str.length(sender) &gt; 3){
+          var cmd = '';
+          set cmd = str.substr(sender, 3, str.length(sender) - 3);
+          if(juhe.servicestate(cmd) = 0){
+            juhe.startservice(cmd);
+          }
+          else{
+            juhe.stopservice(cmd);
+          }
+        }
+      }
+
+      {控件加载方法}
+      function onload(){
+        starttimer('divAll', 1000, 1000);
+      }
+      
+      {秒表方法}
+      function ontimer(){
+        if(juhe.servicestate('all')){invalidate();}
+      }
+    </script>
+  </head>
+  <body>
+    <!--主层-->
+    <div name="divAll" dock="fill" size="400,400" onload="onload();" ontimer="ontimer();">
+      <!--新浪新闻按钮-->
+      <usercontrol cid="runningbutton" name="btnSinaNews" backcolor="200,82,82,82" font="Arial,18,bold" text="新浪新闻" location="50,50" size="240,200" onclick="onclick();" />
+    </div>
+  </body>
+</html>
